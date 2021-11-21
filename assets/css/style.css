@@ -1,3 +1,9 @@
+:root {
+    --whiteglass: rgba(255, 255, 255, 0.18);
+    --darkglass: rgba(67, 67, 67, 0.3);
+    --glassblur: 5px;
+}
+
 *, *:before, *:after {
     margin: 0;
     padding: 0;
@@ -8,5 +14,47 @@ html, body {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    background-color: whitesmoke;
+    color: white;
 }
+
+section.hero {
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+section.hero:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.hero-container {
+    z-index: 1;
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: var(--darkglass);
+    backdrop-filter: blur(--glassblur);
+    -webkit-backdrop-filter: blur(--glassblur);
+    text-align: center;
+}
+
+.time-text {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.date-text {
+    font-size: 16px;
+    font-weight: lighter;
+}
+
