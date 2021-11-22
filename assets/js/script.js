@@ -8,10 +8,9 @@ function getWeatherData() {
         .done(response => displayWeather(response))
 }
 
-function displayWeather(weather) {
-    console.log('weather', weather)
-    let wCondition = weather.current.condition.text
-
+function displayWeather(data) {
+    console.log('weather', data)
+    let wCondition = data.current.condition.text
 
     switch (wCondition) {
         case "Clear":
@@ -95,6 +94,14 @@ function displayWeather(weather) {
         default:
             $('.condition-text').text('No idea of the weather, take a look outside')
     }
+
+    for(let wCat of Object.keys(data)) {
+        console.log(wCat)
+        for(let w of wCat) {
+            console.log(w)
+        }
+        initSlick()
+    }
 }
 
 function getDate() {
@@ -105,7 +112,7 @@ function getDate() {
     const month = months[date.getMonth()]
     const day = date.getDate()
     const weekDay = weekDays[date.getDay()]
-    $('.date-text').text(weekDay + ',' + ' ' + day + ' ' + month + ' ' + year)
+    $('.date-text').text(weekDay + ' ' + '|' + ' ' + day + ' ' + month + ' ' + year)
 
     setInterval(() => {
         getTime()
@@ -117,7 +124,7 @@ function getTime() {
     const hour = date.getHours()
     const min = date.getMinutes()
     const sec = date.getSeconds()
-    $('.time-text').text(hour + ':' + formatTime(min) + ':' + formatTime(sec))
+    $('.time-text').text(formatTime(hour) + ':' + formatTime(min) + ':' + formatTime(sec))
     setBackground(date)
 }
 
@@ -126,11 +133,15 @@ function formatTime(time) {
 }
 
 function setBackground(time) {
-    console.log('Time ->', time)
+    // console.log('Time ->', time)
     if(time > 7 && time < 19) {
         $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
+        $('body').css('color', 'black')
+        $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--lighterglass), var(--lightglass))')
     } else {
         $('section.hero').css('background-image', 'url(./assets/img/night.jpg')
+        $('body').css('color', 'white')
+        $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--darkerglass), var(--darkglass))')
     }
     /* let wCondition = weather.current.condition.text
     console.log('background ---->', wCondition)
@@ -154,4 +165,11 @@ function setBackground(time) {
     } else if (wCondition === 'Light rain shower' || wCondition === 'Moderate or heavy rain shower' || wCondition === 'Torrential rain shower' || wCondition === 'Patchy light rain' || wCondition === 'Light rain' || wCondition === 'Moderate rain at times' || wCondition === 'Moderate rain' || wCondition === 'Heavy rain at times' || wCondition === 'Heavy rain') {
         $('section.hero').css('background-image', 'url(./assets/img/rain.jpg')
     } */
+}
+
+function initSlick() {
+    $('.slick-slider').on('init', function(event, slick) {
+        $('.slick-slider').removeClass('overflow');
+    });
+    $('.forecast-slider').slick({ slidesToShow: 3, draggable: true, lazyLoad: true, slidesToScroll: 1, autoplay: true });
 }
