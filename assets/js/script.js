@@ -95,11 +95,9 @@ function displayWeather(data) {
             $('.condition-text').text('No idea of the weather, take a look outside')
     }
 
-    for(let wCat of Object.keys(data)) {
-        console.log(wCat)
-        for(let w of wCat) {
-            console.log(w)
-        }
+    for(let wCat of Object.keys(data.forecast.forecastday)) {
+        console.log(data.forecast.forecastday[wCat].day)
+        
         initSlick()
     }
 }
