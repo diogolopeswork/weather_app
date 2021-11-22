@@ -17,6 +17,12 @@ html, body {
     width: 100%;
     height: 100%;
     letter-spacing: 2px;
+    color: white;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 section.hero {
@@ -24,6 +30,7 @@ section.hero {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-image: url(/assets/img/night.jpg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,6 +44,7 @@ section.hero {
     backdrop-filter: blur(--glassblur);
     -webkit-backdrop-filter: blur(--glassblur);
     text-align: center;
+    background: linear-gradient(to right bottom, var(--darkerglass), var(--darkglass));
 }
 
 .time-text {
@@ -50,17 +58,16 @@ section.hero {
 }
 
 .slick-slider {
-    height: 75px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.slick-slide {
+.forecast-card {
     width: 100%;
-    height: 100%;
     margin: 0 .25rem;
+    padding: .25rem;
     border-radius: .5rem;
 }
 
@@ -68,3 +75,30 @@ section.hero {
     display: none !important;
 }
 
+.forecast-card-hour, .forecast-temp, .rain-percent {
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+.forecast-card-icon {
+    width: auto;
+    margin: 0 auto;
+}
+
+.forecast-temp-container, .rain-percent-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.rain-percent-container img {
+    width: 30%;
+    margin: 0 .15rem;
+}
+
+.current-weather-container {
+    height: 100%;
+}

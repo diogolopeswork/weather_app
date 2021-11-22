@@ -3,16 +3,22 @@ $(function () {
     getDate()
 })
 
+$(document).on('keypress', function(e) {
+    let keyPressed = e.which
+    let locInput = $('#location-input').val()
+    // changeLocation(keyPressed, locInput)
+})
+
 function getWeatherData() {
-    $.get('http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
+    $.get(`http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no`)
         .done(response => displayWeather(response))
 }
 
 function displayWeather(data) {
     console.log('weather', data)
-    let wCondition = data.current.condition.text
+    // let wCondition = data.current.condition.text
 
-    switch (wCondition) {
+    /* switch (wCondition) {
         case "Clear":
             $('.condition-text').text(wCondition)
             break
@@ -93,13 +99,52 @@ function displayWeather(data) {
             break
         default:
             $('.condition-text').text('No idea of the weather, take a look outside')
-    }
+    } */
 
     for(let wCat of Object.keys(data.forecast.forecastday)) {
-        console.log(data.forecast.forecastday[wCat].day)
-        
+        // console.log('data.forecast =>', data.forecast.forecastday[wCat])
+        let container = $(`
+            <div class="slick-slider forecast-slider"></div>
+        `)
+        $('.forecast-container').append(container)
+        // console.log('Day =>', data.forecast.forecastday[wCat].day)
+        for(let wHour of data.forecast.forecastday[wCat].hour) {
+            let hour = wHour
+            // console.log('Hour', hour)
+            let temp = hour.temp_c
+            let rainPercent = hour.chance_of_rain
+            let hourCondText = hour.condition.text
+            let hourIcon = hour.condition.icon
+            let elem = $(`
+                <div class="slick-slide glass-container forecast-card">
+                    <span class="forecast-card-hour">${wHour.time.slice(10)}</span>
+                    <img class="forecast-card-icon" src="${hourIcon}">
+                    <span class="forecast-temp">${hourCondText}</span>
+                    <div class="forecast-temp-container">
+                        <span class="forecast-temp">${temp + 'º'}</span>
+                    </div>
+                    <div class="rain-percent-container">
+                        <img src="./assets/img/weather_icons/day/302.png"> 
+                        <span class="rain-percent">${rainPercent + '%'}</span>
+                    </div>
+                </div>
+            `)
+            $('.forecast-slider').append(elem)
+        }
         initSlick()
     }
+
+    let currWeatherElem = $(`
+        <div class="row">
+            <div class="col-6">
+                <h4 class="city-text">Ílhavo</h4>
+            </div>
+            <div class="col-6">
+                . . .
+            </div>
+        </div>
+    `)
+    $('.current-weather-container').append(currWeatherElem)
 }
 
 function getDate() {
@@ -136,10 +181,6 @@ function setBackground(time) {
         $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
         $('body').css('color', 'black')
         $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--lighterglass), var(--lightglass))')
-    } else {
-        $('section.hero').css('background-image', 'url(./assets/img/night.jpg')
-        $('body').css('color', 'white')
-        $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--darkerglass), var(--darkglass))')
     }
     /* let wCondition = weather.current.condition.text
     console.log('background ---->', wCondition)
@@ -169,5 +210,22 @@ function initSlick() {
     $('.slick-slider').on('init', function(event, slick) {
         $('.slick-slider').removeClass('overflow');
     });
-    $('.forecast-slider').slick({ slidesToShow: 3, draggable: true, lazyLoad: true, slidesToScroll: 1, autoplay: true });
+    $('.forecast-slider').slick({ slidesToShow: 3, draggable: true, lazyLoad: true, slidesToScroll: 3, autoplay: true });
 }
+
+function changeLocation(key, val) {
+    if(key == 13) {
+        if($(val) == ' ') {
+            console.log('input vazio')
+        } else {
+            console.log('tudo certo')
+        }
+        return val
+    }
+}
+
+/* TODO:
+    - Descomentar call da function changeLocation
+    - Descomentar input no index.html
+
+*/
