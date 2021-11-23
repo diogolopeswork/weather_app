@@ -25,6 +25,10 @@ img {
     max-width: 100%;
 }
 
+a {
+    color: white;
+}
+
 section.hero {
     height: 100vh;
     background-position: center;
@@ -35,6 +39,7 @@ section.hero {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    position: relative;
 }
 
 .glass-container {
@@ -75,7 +80,7 @@ section.hero {
     display: none !important;
 }
 
-.forecast-card-hour, .forecast-temp, .rain-percent {
+.details-text {
     font-size: 14px;
     font-weight: lighter;
 }
@@ -85,7 +90,7 @@ section.hero {
     margin: 0 auto;
 }
 
-.forecast-temp-container, .rain-percent-container {
+.forecast-temp-container, .details-text-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -94,11 +99,38 @@ section.hero {
     align-items: center;
 }
 
-.rain-percent-container img {
-    width: 30%;
+.details-text-container img {
+    width: 25%;
     margin: 0 .15rem;
 }
 
 .current-weather-container {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.city-text {
+    font-weight: lighter;
+}
+
+.three-dots {
+    font-size: 1.56rem;
+    color: white;
+    font-weight: lighter;
+}
+
+.curr-temp-text {
+    font-size: 3.12rem;
+}
+
+.current-weather-img {
+    width: 100%;
+}
+
+.footer-nav-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
 }
