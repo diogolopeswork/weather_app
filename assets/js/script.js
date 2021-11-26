@@ -3,24 +3,6 @@ $(function () {
     getDate()
 })
 
-$(document).on('keypress', function(e) {
-    let keyPressed = e.which
-    let val = $('#cityloc').val()
-    changeLocation(keyPressed, val)
-})
-
-/* $(document).on('click', '.tab-btn', function(e) {
-    $('.tab-btn.active').removeClass('active')
-    $(this).addClass('active')
-    if($('.location-btn').hasClass('active')) {
-        $('.hero-container, .forecast-container, .current-weather-container').hide('slow')
-        $('.location-container').show()
-    } else {
-        $('.hero-container, .forecast-container, .current-weather-container').show('slow')
-        $('.location-container').hide()
-    }
-}) */
-
 function getWeatherData() {
     $.get('http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
         .done(response => displayWeather(response))
@@ -30,15 +12,12 @@ function displayWeather(data) {
     console.log('weather', data)
 
     for(let wCat of Object.keys(data.forecast.forecastday)) {
-        // console.log('data.forecast =>', data.forecast.forecastday[wCat])
         let container = $(`
             <div class="slick-slider forecast-slider"></div>
         `)
         $('.forecast-container').append(container)
-        // console.log('Day =>', data.forecast.forecastday[wCat].day)
         for(let wHour of data.forecast.forecastday[wCat].hour) {
             let hour = wHour
-            // console.log('Hour', hour)
             let temp = hour.temp_c
             let rainPercent = hour.chance_of_rain
             let hourCondText = hour.condition.text
@@ -112,7 +91,6 @@ function formatTime(time) {
 }
 
 function setBackground(time) {
-    // console.log('Time ->', time)
     if(time > 7 && time < 19) {
         $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
         $('body').css('color', 'black')
@@ -128,22 +106,6 @@ function initSlick() {
     $('.forecast-slider').slick({ slidesToShow: 3, draggable: true, lazyLoad: true, slidesToScroll: 3, autoplay: true });
 }
 
-/* function changeLocation(key, val) {
-    if(key == 13) {
-        if($(val) == ' ') {
-            console.log('input vazio')
-        } else {
-            console.log(val)
-        }
-        return val
-    }
-} */
-
 function formatUnits(unit) {
     return Math.floor(unit)
 }
-
-/* TODO:
-    - fix tabs
-    - arranjar soluçao para mudar location
-*/

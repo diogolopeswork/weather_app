@@ -46,7 +46,7 @@ section.hero {
 .glass-container {
     z-index: 1;
     padding: 1rem;
-    border-radius: .5rem;
+    border-radius: .25rem;
     backdrop-filter: blur(--glassblur);
     -webkit-backdrop-filter: blur(--glassblur);
     text-align: center;
@@ -74,7 +74,7 @@ section.hero {
     width: 100%;
     margin: 0 .25rem;
     padding: .25rem;
-    border-radius: .5rem;
+    border-radius: .25rem;
 }
 
 .slick-arrow {
@@ -151,13 +151,9 @@ section.hero {
 .location-container input {
     height: 35px;
     margin: .5rem;
-    border-radius: .5rem;
+    border-radius: .25rem;
     outline: none;
     border: none;
     background-color: whitesmoke;
     padding: .5rem;
-}
-
-.location-container {
-    display: none;
 }
