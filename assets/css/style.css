@@ -14,8 +14,6 @@
 
 html, body {
     overflow: hidden;
-    width: 100%;
-    height: 100%;
     letter-spacing: 2px;
     color: white;
 }
@@ -25,22 +23,14 @@ img {
     max-width: 100%;
 }
 
-a {
-    color: white;
-}
+a { color: white; }
 
 section.hero {
     height: 100vh;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url(/assets/img/night.jpg);
+    background: center / cover no-repeat url(/assets/img/night.jpg);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     padding: 1rem;
-    position: relative;
 }
 
 .glass-container {
@@ -53,22 +43,8 @@ section.hero {
     background: linear-gradient(to right bottom, var(--darkerglass), var(--darkglass));
 }
 
-.time-text {
-    font-size: 50px;
-    font-weight: 500;
-}
-
-.date-text {
-    font-size: 16px;
-    font-weight: lighter;
-}
-
-.slick-slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-}
+.time-text { font-size: 50px; font-weight: 500; }
+.date-text { font-size: 16px; font-weight: lighter; }
 
 .forecast-card {
     width: 100%;
@@ -81,12 +57,9 @@ section.hero {
     display: none !important;
 }
 
-.details-text {
-    font-size: 14px;
-    font-weight: lighter;
-}
+.details-text { font-size: 14px; font-weight: lighter; }
 
-.forecast-card-icon {
+.forecast-card-icon, .details-text-container img {
     width: 50px;
     height: 50px;
     margin: .25rem auto;
@@ -102,8 +75,8 @@ section.hero {
 }
 
 .details-text-container img {
-    width: 25%;
-    margin: 0 .15rem;
+    width: 40px;
+    height: 40px;
 }
 
 .current-weather-container {
@@ -113,47 +86,11 @@ section.hero {
     justify-content: space-between;
 }
 
-.city-text {
-    font-weight: lighter;
-}
-
-.three-dots {
-    font-size: 1.56rem;
-    color: white;
-    font-weight: lighter;
-}
-
-.curr-temp-text {
-    font-size: 3.12rem;
-}
+.city-text { font-weight: lighter; }
+.curr-temp-text { font-size: 3.12rem; }
 
 .current-weather-img {
     width: 100px;
     height: 100px;
 }
 
-.footer-nav-container {
-    height: 5vh;
-    position: relative;
-    width: 100%;
-    margin-bottom: 0;
-}
-
-.tab-btn.active {
-    color: var(--bs-primary);
-}
-
-.location-container {
-    height: auto;
-    padding: 1rem;
-}
-
-.location-container input {
-    height: 35px;
-    margin: .5rem;
-    border-radius: .25rem;
-    outline: none;
-    border: none;
-    background-color: whitesmoke;
-    padding: .5rem;
-}
