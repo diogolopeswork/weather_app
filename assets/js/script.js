@@ -21,7 +21,7 @@ $(document).on('click', '.tab-btn', function(e) {
 })
 
 function getWeatherData() {
-    $.get(`http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no`)
+    $.get('http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
         .done(response => displayWeather(response))
 }
 
@@ -134,14 +134,10 @@ function changeLocation(key, val) {
         } else {
             console.log(val)
         }
+        return val
     }
 }
-
 
 function formatUnits(unit) {
     return Math.floor(unit)
 }
-
-/* Todo:
-    ajax call with new city param received
-*/
