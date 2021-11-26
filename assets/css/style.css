@@ -6,13 +6,16 @@
     --glassblur: 2rem;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     overflow: hidden;
     letter-spacing: 2px;
     color: white;
@@ -23,7 +26,9 @@ img {
     max-width: 100%;
 }
 
-a { color: white; }
+a {
+    color: white;
+}
 
 section.hero {
     height: 100vh;
@@ -43,8 +48,15 @@ section.hero {
     background: linear-gradient(to right bottom, var(--darkerglass), var(--darkglass));
 }
 
-.time-text { font-size: 50px; font-weight: 500; }
-.date-text { font-size: 16px; font-weight: lighter; }
+.time-text {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.date-text {
+    font-size: 16px;
+    font-weight: lighter;
+}
 
 .forecast-card {
     width: 100%;
@@ -57,15 +69,21 @@ section.hero {
     display: none !important;
 }
 
-.details-text { font-size: 14px; font-weight: lighter; }
+.details-text {
+    font-size: 14px;
+    font-weight: lighter;
+}
 
-.forecast-card-icon, .details-text-container img {
+.forecast-card-icon,
+.details-text-container img {
     width: 50px;
     height: 50px;
     margin: .25rem auto;
 }
+.details-text-container img { margin: .25rem; }
 
-.forecast-temp-container, .details-text-container {
+.forecast-temp-container,
+.details-text-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -84,13 +102,37 @@ section.hero {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
-.city-text { font-weight: lighter; }
-.curr-temp-text { font-size: 3.12rem; }
+.city-text {
+    font-weight: lighter;
+}
+
+.curr-temp-text {
+    font-size: 3.12rem;
+}
 
 .current-weather-img {
     width: 100px;
     height: 100px;
 }
 
+@media screen and (min-width: 768px) {
+    .current-weather-container { justify-content: space-between; }
+    .city-text { font-size: 50px; }
+    .curr-temp-text { font-size: 100px;}
+    .current-weather-img {
+        position: absolute;
+        top: 1rem;
+        left: calc(1rem + 20%);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .current-weather-img { left: calc(1rem + 15%); top: 0%;}
+}
+
+@media screen and (min-width: 1440px) {
+    .current-weather-img { left: calc(1rem + 12%);}
+}

@@ -9,14 +9,12 @@ function getWeatherData() {
 }
 
 function displayWeather(data) {
-    console.log('weather', data)
-
-    for(let wCat of Object.keys(data.forecast.forecastday)) {
+    for (let wCat of Object.keys(data.forecast.forecastday)) {
         let container = $(`
             <div class="slick-slider forecast-slider"></div>
         `)
         $('.forecast-container').append(container)
-        for(let wHour of data.forecast.forecastday[wCat].hour) {
+        for (let wHour of data.forecast.forecastday[wCat].hour) {
             let hour = wHour
             let temp = hour.temp_c
             let rainPercent = hour.chance_of_rain
@@ -48,13 +46,13 @@ function displayWeather(data) {
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-6 d-flex flex-column text-start">
+            <div class="col-md-12 d-flex flex-column text-start">
                 <span class="curr-temp-text">${formatUnits(data.current.temp_c) + 'º'}</span>
                 <span class="details-text">${data.current.condition.text}</span>
                 <span class="details-text">${'Wind' + ' ' + formatUnits(data.current.wind_kph) + ' ' + 'km/h'}</span>
                 <span class="details-text">${'Humidity' + ' ' + data.current.humidity + '%'}</span>
             </div>
-            <div class="col-6 m-auto">
+            <div class="col-md-12 m-auto">
                 <img class="current-weather-img" src="${data.current.condition.icon}">
             </div>
         </div>
@@ -91,7 +89,7 @@ function formatTime(time) {
 }
 
 function setBackground(time) {
-    if(time > 7 && time < 19) {
+    if (time > 7 && time < 19) {
         $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
         $('body').css('color', 'black')
         $('a').css('color', 'black')
@@ -100,10 +98,24 @@ function setBackground(time) {
 }
 
 function initSlick() {
-    $('.slick-slider').on('init', function(event, slick) {
+    $('.slick-slider').on('init', function (event, slick) {
         $('.slick-slider').removeClass('overflow');
     });
-    $('.forecast-slider').slick({ slidesToShow: 3, draggable: true, lazyLoad: true, slidesToScroll: 3, autoplay: true });
+    $('.forecast-slider').slick({
+        slidesToShow: 3,
+        draggable: true,
+        lazyLoad: true,
+        slidesToScroll: 3,
+        autoplay: true,
+        mobileFirst: true,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 5,
+                slidesToScroll: 5,
+            }
+        }]
+    })
 }
 
 function formatUnits(unit) {
