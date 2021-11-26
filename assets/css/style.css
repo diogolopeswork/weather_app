@@ -86,8 +86,9 @@ section.hero {
 }
 
 .forecast-card-icon {
-    width: auto;
-    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    margin: .25rem auto;
 }
 
 .forecast-temp-container, .details-text-container {
@@ -126,7 +127,8 @@ section.hero {
 }
 
 .current-weather-img {
-    width: 100%;
+    width: 100px;
+    height: 100px;
 }
 
 .footer-nav-container {

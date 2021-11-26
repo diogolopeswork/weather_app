@@ -37,11 +37,11 @@ function displayWeather(data) {
                     <img class="forecast-card-icon" src="${hourIcon}">
                     <span class="details-text">${hourCondText}</span>
                     <div class="details-text-container">
-                        <span class="details-text">${temp + 'º'}</span>
+                        <span class="details-text">${formatUnits(temp) + 'º'}</span>
                     </div>
                     <div class="details-text-container">
                         <img src="./assets/img/weather_icons/day/302.png"> 
-                        <span class="details-text">${rainPercent + '%'}</span>
+                        <span class="details-text">${formatUnits(rainPercent) + '%'}</span>
                     </div>
                 </div>
             `)
@@ -58,9 +58,9 @@ function displayWeather(data) {
         </div>
         <div class="row mt-3">
             <div class="col-6 d-flex flex-column text-start">
-                <span class="curr-temp-text">${data.current.temp_c + 'º'}</span>
+                <span class="curr-temp-text">${formatUnits(data.current.temp_c) + 'º'}</span>
                 <span class="details-text">${data.current.condition.text}</span>
-                <span class="details-text">${'Wind' + ' ' + data.current.wind_kph + ' ' + 'km/h'}</span>
+                <span class="details-text">${'Wind' + ' ' + formatUnits(data.current.wind_kph) + ' ' + 'km/h'}</span>
                 <span class="details-text">${'Humidity' + ' ' + data.current.humidity + '%'}</span>
             </div>
             <div class="col-6 m-auto">
@@ -149,7 +149,7 @@ function changeLocation(key, val) {
     }
 }
 
-/* TODO:
-    - Descomentar call da function changeLocation
-    - Descomentar input no index.html
-*/
+
+function formatUnits(unit) {
+    return Math.floor(unit)
+}
