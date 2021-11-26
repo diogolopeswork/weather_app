@@ -38,6 +38,7 @@ section.hero {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem;
     position: relative;
 }
@@ -132,7 +133,27 @@ section.hero {
 }
 
 .footer-nav-container {
+    height: 5vh;
     position: relative;
     width: 100%;
     margin-bottom: 0;
+}
+
+.tab-btn.active {
+    color: var(--bs-primary);
+}
+
+.location-container {
+    height: auto;
+    padding: 1rem;
+}
+
+.location-container input {
+    height: 35px;
+    margin: .5rem;
+    border-radius: .5rem;
+    outline: none;
+    border: none;
+    background-color: whitesmoke;
+    padding: .5rem;
 }

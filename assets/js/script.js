@@ -5,16 +5,19 @@ $(function () {
 
 $(document).on('keypress', function(e) {
     let keyPressed = e.which
-    let locInput = $('#location-input').val()
-    changeLocation(keyPressed, locInput)
+    let val = $('#cityloc').val()
+    changeLocation(keyPressed, val)
 })
 
-$(document).on('click', '.location-btn', function(e) {
-    $('.hero-container, .forecast-container, .current-weather-container').hide().slow()
-})
-
-$(document).on('click', '.weather-btn', function(e) {
-    $('.hero-container, .forecast-container, .current-weather-container').show().slow()
+$(document).on('click', '.tab-btn', function(e) {
+    $('.tab-btn.active').removeClass('active')
+    $(this).addClass('active')
+    if($('.location-btn').hasClass('active')) {
+        $('.hero-container, .forecast-container, .current-weather-container').hide('slow')
+        $('.location-container').removeClass('d-none')
+    } else {
+        $('.hero-container, .forecast-container, .current-weather-container').show('slow')
+    }
 })
 
 function getWeatherData() {
@@ -115,28 +118,6 @@ function setBackground(time) {
         $('a').css('color', 'black')
         $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--lighterglass), var(--lightglass))')
     }
-    /* let wCondition = weather.current.condition.text
-    console.log('background ---->', wCondition)
-
-    if (wCondition === 'Clear') {
-        $('section.hero').css('background-image', 'url(./assets/img/clear.jpg')
-    } else if (wCondition === 'Partly cloudy' || wCondition === 'Cloudy') {
-        $('section.hero').css('background-image', 'url(./assets/img/cloudy.jpg')
-    } else if (wCondition === 'Fog') {
-        $('section.hero').css('background-image', 'url(./assets/img/fog.jpg')
-    } else if (wCondition === 'Sunny') {
-        $('section.hero').css('background-image', 'url(./assets/img/sunny.jpg')
-    } else if (wCondition === 'Overcast') {
-        $('section.hero').css('background-image', 'url(./assets/img/overcast.jpg')
-    } else if (wCondition === 'Mist') {
-        $('section.hero').css('background-image', 'url(./assets/img/mist.jpg')
-    } else if (wCondition === 'Patchy light rain with thunder' || wCondition === 'Moderate or heavy rain with thunder') {
-        $('section.hero').css('background-image', 'url(./assets/img/thunder.jpg')
-    } else if (wCondition === 'Light snow showers' || wCondition === 'Moderate or heavy snow showers' || wCondition === 'Patchy light snow' || wCondition === 'Light snow' || wCondition === 'Patchy moderate snow' || wCondition === 'Moderate snow' || wCondition === 'Patchy heavy snow' || wCondition === 'Heavy snow') {
-        $('section.hero').css('background-image', 'url(./assets/img/snow.jpg')
-    } else if (wCondition === 'Light rain shower' || wCondition === 'Moderate or heavy rain shower' || wCondition === 'Torrential rain shower' || wCondition === 'Patchy light rain' || wCondition === 'Light rain' || wCondition === 'Moderate rain at times' || wCondition === 'Moderate rain' || wCondition === 'Heavy rain at times' || wCondition === 'Heavy rain') {
-        $('section.hero').css('background-image', 'url(./assets/img/rain.jpg')
-    } */
 }
 
 function initSlick() {
@@ -151,9 +132,8 @@ function changeLocation(key, val) {
         if($(val) == ' ') {
             console.log('input vazio')
         } else {
-            console.log('tudo certo')
+            console.log(val)
         }
-        return val
     }
 }
 
@@ -161,3 +141,7 @@ function changeLocation(key, val) {
 function formatUnits(unit) {
     return Math.floor(unit)
 }
+
+/* Todo:
+    ajax call with new city param received
+*/
