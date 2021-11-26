@@ -9,6 +9,14 @@ $(document).on('keypress', function(e) {
     changeLocation(keyPressed, locInput)
 })
 
+$(document).on('click', '.location-btn', function(e) {
+    $('.hero-container, .forecast-container, .current-weather-container').hide().slow()
+})
+
+$(document).on('click', '.weather-btn', function(e) {
+    $('.hero-container, .forecast-container, .current-weather-container').show().slow()
+})
+
 function getWeatherData() {
     $.get(`http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no`)
         .done(response => displayWeather(response))
