@@ -157,3 +157,7 @@ section.hero {
     background-color: whitesmoke;
     padding: .5rem;
 }
+
+.location-container {
+    display: none;
+}

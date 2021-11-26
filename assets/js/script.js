@@ -9,16 +9,17 @@ $(document).on('keypress', function(e) {
     changeLocation(keyPressed, val)
 })
 
-$(document).on('click', '.tab-btn', function(e) {
+/* $(document).on('click', '.tab-btn', function(e) {
     $('.tab-btn.active').removeClass('active')
     $(this).addClass('active')
     if($('.location-btn').hasClass('active')) {
         $('.hero-container, .forecast-container, .current-weather-container').hide('slow')
-        $('.location-container').removeClass('d-none')
+        $('.location-container').show()
     } else {
         $('.hero-container, .forecast-container, .current-weather-container').show('slow')
+        $('.location-container').hide()
     }
-})
+}) */
 
 function getWeatherData() {
     $.get('http://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
@@ -127,7 +128,7 @@ function initSlick() {
     $('.forecast-slider').slick({ slidesToShow: 3, draggable: true, lazyLoad: true, slidesToScroll: 3, autoplay: true });
 }
 
-function changeLocation(key, val) {
+/* function changeLocation(key, val) {
     if(key == 13) {
         if($(val) == ' ') {
             console.log('input vazio')
@@ -136,8 +137,13 @@ function changeLocation(key, val) {
         }
         return val
     }
-}
+} */
 
 function formatUnits(unit) {
     return Math.floor(unit)
 }
+
+/* TODO:
+    - fix tabs
+    - arranjar soluçao para mudar location
+*/
