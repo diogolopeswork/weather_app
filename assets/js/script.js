@@ -64,7 +64,6 @@ function setBackground(time) {
     }
 }
 */
-
 $(function () {
     getWeatherData()
     getDate()
@@ -75,15 +74,15 @@ function getWeatherData() {
         .done(response => displayWeather(response))
 }
 
-/* function initSlick() {
+function initSlick() {
     $('.slick-slider').on('init', function (event, slick) {
         $('.slick-slider').removeClass('overflow');
     });
     $('.forecast-slider').slick({
-        slidesToShow: 3,
+        slidesToShow: 2,
         draggable: true,
         lazyLoad: true,
-        slidesToScroll: 3,
+        slidesToScroll: 2,
         autoplay: true,
         mobileFirst: true,
         responsive: [{
@@ -94,7 +93,7 @@ function getWeatherData() {
             }
         }]
     })
-} */
+}
 
 function getDate() {
     const date = new Date()
@@ -122,7 +121,7 @@ function getTime() {
 
 function displayWeather(data) {
     console.log(data)
-    /* for (let wCat of Object.keys(data.forecast.forecastday)) {
+    for (let wCat of Object.keys(data.forecast.forecastday)) {
         let container = $(`
             <div class="slick-slider forecast-slider"></div>
         `)
@@ -134,23 +133,23 @@ function displayWeather(data) {
             let hourCondText = hour.condition.text
             let hourIcon = hour.condition.icon
             let elem = $(`
-                <div class="slick-slide forecast-card">
-                    <span class="details-text">${wHour.time.slice(10)}</span>
+                <div class="slick-slide forecast-card mt-2">
+                    <span class="fw-lighter">${wHour.time.slice(10)}</span>
                     <img class="forecast-card-icon" src="${hourIcon}">
-                    <span class="details-text">${hourCondText}</span>
+                    <span class="fw-lighter">${hourCondText}</span>
                     <div class="details-text-container">
-                        <span class="details-text">${formatUnits(temp) + 'º'}</span>
+                        <span class="fw-lighter">${formatUnits(temp) + 'º'}</span>
                     </div>
                     <div class="details-text-container">
                         <img src="./assets/img/weather_icons/day/302.png"> 
-                        <span class="details-text">${formatUnits(rainPercent) + '%'}</span>
+                        <span class="fw-lighter">${formatUnits(rainPercent) + '%'}</span>
                     </div>
                 </div>
             `)
             $('.forecast-slider').append(elem)
         }
         initSlick()
-    } */
+    }
 
     let currWeatherElem = $(`
         <div class="curr-temp-container">
@@ -167,8 +166,6 @@ function displayWeather(data) {
     $('.hero-left').append(currWeatherElem)
     $('.hour-n-date').append(currWeather)
 }
-
-
 
 function formatTime(time) {
     return time < 10 ? (`0${time}`) : time
