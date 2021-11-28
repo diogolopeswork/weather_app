@@ -3,72 +3,6 @@
     getDate()
 })
 
-function displayWeather(data) {
-    for (let wCat of Object.keys(data.forecast.forecastday)) {
-        let container = $(`
-            <div class="slick-slider forecast-slider"></div>
-        `)
-        $('.forecast-container').append(container)
-        for (let wHour of data.forecast.forecastday[wCat].hour) {
-            let hour = wHour
-            let temp = hour.temp_c
-            let rainPercent = hour.chance_of_rain
-            let hourCondText = hour.condition.text
-            let hourIcon = hour.condition.icon
-            let elem = $(`
-                <div class="slick-slide forecast-card">
-                    <span class="details-text">${wHour.time.slice(10)}</span>
-                    <img class="forecast-card-icon" src="${hourIcon}">
-                    <span class="details-text">${hourCondText}</span>
-                    <div class="details-text-container">
-                        <span class="details-text">${formatUnits(temp) + 'º'}</span>
-                    </div>
-                    <div class="details-text-container">
-                        <img src="./assets/img/weather_icons/day/302.png"> 
-                        <span class="details-text">${formatUnits(rainPercent) + '%'}</span>
-                    </div>
-                </div>
-            `)
-            $('.forecast-slider').append(elem)
-        }
-        initSlick()
-    }
-
-    let currWeatherElem = $(`
-        <div class="row">
-            <div class="col-6 d-flex justify-content-start">
-                <h4 class="city-text">Ílhavo</h4>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-md-12 d-flex flex-column text-start">
-                <span class="curr-temp-text">${formatUnits(data.current.temp_c) + 'º'}</span>
-                <span class="details-text">${data.current.condition.text}</span>
-                <span class="details-text">${'Wind' + ' ' + formatUnits(data.current.wind_kph) + ' ' + 'km/h'}</span>
-                <span class="details-text">${'Humidity' + ' ' + data.current.humidity + '%'}</span>
-            </div>
-            <div class="col-md-12 m-auto">
-                <img class="current-weather-img" src="${data.current.condition.icon}">
-            </div>
-        </div>
-    `)
-    $('.current-weather-container').append(currWeatherElem)
-}
-
-function setBackground(time) {
-    if (time > 7 && time < 19) {
-        $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
-        $('body').css('color', 'black')
-        $('a').css('color', 'black')
-        $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--lighterglass), var(--lightglass))')
-    }
-}
-*/
-$(function () {
-    getWeatherData()
-    getDate()
-})
-
 function getWeatherData() {
     $.get('https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
         .done(response => displayWeather(response))
@@ -174,3 +108,12 @@ function formatTime(time) {
 function formatUnits(unit) {
     return Math.floor(unit)
 }
+
+function setBackground(time) {
+    if (time > 7 && time < 19) {
+        $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
+        $('body').css('color', 'black')
+        $('a').css('color', 'black')
+        $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--lighterglass), var(--lightglass))')
+    }
+} */

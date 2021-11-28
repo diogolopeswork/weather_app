@@ -1,4 +1,4 @@
-*,
+/* *,
 :after,
 :before {
     margin: 0;
@@ -68,53 +68,17 @@ section.hero:before {
     justify-content: space-between;
 }
 
-/* 
-
-
-
-.details-text-container img {
-    margin: .25rem
-}
-
-.details-text-container,
-.forecast-temp-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center
-}
-
-.details-text-container img {
-    width: 40px;
-    height: 40px
-}
-
-.city-text {
-    font-weight: lighter
-}
-
-.curr-temp-text {
-    font-size: 3.12rem
-}
-
-.current-weather-img {
-    width: 100px;
-    height: 100px
-}
-*/
-
 .temp-text {
     border: 3px solid white;
     padding: 1rem;
-    margin: 0 .5rem 0 0;
-    border-radius: 50%;
+    border-radius: 100%;
     font-size: 5rem;
+    width: 150px;
+    text-align: center;
 }
 
-.city-text { font-size: 4rem; }
-.time-text, .date-text { font-size: 2.5rem; }
+.city-text { font-size: 4rem; margin-left: 1rem;}
+.time-text, .date-text { font-size: 2.4rem; }
 
 .curr-temp-container, .curr-condition-container {
     display: flex;
@@ -175,3 +139,4 @@ section.hero:before {
     height: 50px;
     margin: 0 auto;
 }
+ */
