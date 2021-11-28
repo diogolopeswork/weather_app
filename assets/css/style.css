@@ -1,4 +1,4 @@
-/* *,
+*,
 :after,
 :before {
     margin: 0;
@@ -8,11 +8,9 @@
 
 body,
 html {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     letter-spacing: 2px;
-    color: #fff;
-    background: var(--bs-dark);
+    color: white;
 }
 
 img {
@@ -20,107 +18,121 @@ img {
     max-width: 100%;
 }
 
-a {
-    color: #fff
+a, a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(5px);
+    /* border-radius: 16px; */
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 section.hero {
+    height: 100vh;
     background: center/cover no-repeat url(/assets/img/day.jpg);
-    display: flex;
-    flex-direction: column;
-    background-attachment: fixed;
-    position: relative;
 }
 
 section.hero:before {
     content: '';
-    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
-.hero .col-12, .hero .col-md-7, .hero .col-md-5 {
-    height: 100vh;
-    padding: 1rem;
-    z-index: 1;
-}
-
-.glass-container {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 1rem;
-}
-
-.slick-arrow {
-    display: none !important
-}
-
-.hero-left {
+.col-lg-7 {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.temp-text {
-    border: 3px solid white;
-    padding: 1rem;
-    border-radius: 100%;
-    font-size: 5rem;
-    width: 150px;
-    text-align: center;
-}
-
-.city-text { font-size: 4rem; margin-left: 1rem;}
-.time-text, .date-text { font-size: 2.4rem; }
-
-.curr-temp-container, .curr-condition-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: flex-end;
-    align-items: center;
-}
-
-.curr-weather-img {
-    width: 100px;
-    height: 100px;
-}
-
-.hour-n-date {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-
-.search-container {
-    width: 100%;
     padding: .5rem;
     position: relative;
+}
+
+.col-lg-5 {
+    display: none;
+    padding: .5rem;
+}
+
+.hour-n-date-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    text-align: center;
+}
+
+.time-text, .curr-loc { font-size: 3.125rem; }
+.curr-temp { font-size: 5rem; }
+
+.temp-n-loc-container {
+    position: absolute;
+    bottom: .5rem;
+    left: .5rem;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+}
+
+.hero-header {
+    position: relative;
+    min-height: 5vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 }
 
-#search-city {
+.hamburger, .c-hamburger {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
     background-color: transparent;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: .25rem;
-    text-align: center;
     color: white;
-    width: 100%;
-    margin: .25rem;
+    border: none;
+    outline: none;
 }
+
+.change-loc-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.change-loc-container input {
+    width: 50%;
+    margin: 0 1rem;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.change-loc-container input:focus {
+    width: calc(100% - 5rem);
+    transition: width .5s linear;
+}
+
+.forecast-container, .curr-weather-details {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+}
+
+.slick-arrow { display: none !important;}
 
 .forecast-card {
     padding: .25rem;
@@ -139,4 +151,14 @@ section.hero:before {
     height: 50px;
     margin: 0 auto;
 }
- */
+
+@media screen and (min-width: 1024px) {
+    section.hero {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .col-lg-5 { display: flex; }
+    .hamburger, .c-hamburger { display: none;}
+    .hero-right .hero-header { min-height: 0;}
+}

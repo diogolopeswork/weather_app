@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="./assets/css/jquery-ui.min.css">
     <link type="text/css" rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="./assets/css/slick.css">
@@ -42,8 +43,38 @@
             </div>
         </div>
     </section> -->
-        
+
+    <!-- 
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+-->
+
+    <section class="hero">
+        <div class="col-lg-7 hero-left">
+            <div class="hero-header">
+                <a href="#" class="app-name">Weathapp</a>
+                <button class="hamburger"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="hour-n-date-container mt-5">
+                <span class="time-text fw-lighter"></span>
+                <span class="date-text fw-lighter"></span>
+            </div>
+        </div>
+        <div class="col-lg-5 hero-right glass-container">
+            <div class="hero-header mb-3">
+                <button class="c-hamburger d-none"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="change-loc-container">
+                <input type="text" id="location-input">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="forecast-container mt-5"></div>
+            <div class="curr-weather-details">teste</div>
+        </div>
+    </section>
+
     <script rel="preload" type="text/javascript" src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script rel="preload" type="text/javascript" src="./assets/js/jquery-ui.min.js"></script>
     <script rel="preload" type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
     <script rel="preload" type="text/javascript" src="./assets/js/slick.min.js"></script>
     <script rel="preload" type="text/javascript" src="./assets/js/script.js"></script>
