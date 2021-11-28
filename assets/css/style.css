@@ -1,13 +1,10 @@
-*,
-:after,
-:before {
+*, :after, :before {
     margin: 0;
     padding: 0;
     box-sizing: border-box
 }
 
-body,
-html {
+body, html {
     overflow: hidden;
     letter-spacing: 2px;
     color: white;
@@ -146,8 +143,7 @@ section.hero:before {
     overflow: hidden;
 }
 
-.details-text-container img,
-.forecast-card-icon {
+.details-text-container img, .forecast-card-icon {
     width: 50px;
     height: 50px;
     margin: 0 auto;
