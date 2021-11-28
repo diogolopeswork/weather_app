@@ -155,18 +155,6 @@ function setBackground(weather, time) {
             case '1003':
                 $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/cloudy.jpg)')
                 break
-            case '1135':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/fog.jpg)')
-                break
-            case '1009':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/overcast.jpg)')
-                break
-            case '1030':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/mist.jpg)')
-                break
-            case '1276':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/thunder.jpg)')
-                break
             default:
                 $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/day.jpg)')
                 break
@@ -178,18 +166,6 @@ function setBackground(weather, time) {
         }
     } else {
         switch (weather) {
-            case '1135':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/fog.jpg)')
-                break
-            case '1009':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/overcast.jpg)')
-                break
-            case '1030':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/mist.jpg)')
-                break
-            case '1276':
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/thunder.jpg)')
-                break
             default:
                 $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/night.jpg)')
                 break
@@ -201,5 +177,14 @@ function setBackground(weather, time) {
         } else if (weather === 1000 || weather === 1006 || weather === 1003) {
             $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/night.jpg)')
         }
+    }
+    if (weather === 1135) {
+        $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/fog.jpg)')
+    } else if (weather === 1009) {
+        $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/overcast.jpg)')
+    } else if (weather === 1030) {
+        $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/mist.jpg)')
+    } else if (weather === 1276) {
+        $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/thunder.jpg)')
     }
 }
