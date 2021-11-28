@@ -107,7 +107,7 @@ section.hero:before {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
 }
 
@@ -123,8 +123,9 @@ section.hero:before {
 }
 
 .change-loc-container input:focus {
-    width: calc(100% - 5rem);
+    width: 100%;
     transition: width .5s linear;
+    background-color: transparent;
 }
 
 .forecast-container, .curr-weather-details {
@@ -152,6 +153,11 @@ section.hero:before {
     margin: 0 auto;
 }
 
+.weather-details {
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
 @media screen and (min-width: 1024px) {
     section.hero {
         display: flex;
@@ -159,6 +165,8 @@ section.hero:before {
     }
 
     .col-lg-5 { display: flex; }
-    .hamburger, .c-hamburger { display: none;}
-    .hero-right .hero-header { min-height: 0;}
+    .hamburger, .c-hamburger { display: none; }
+    .hero-right .hero-header { min-height: 0; }
+    .time-text, .curr-loc { font-size: 5rem; }
+    .curr-temp { font-size: 7rem; }
 }

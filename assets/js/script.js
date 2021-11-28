@@ -113,6 +113,17 @@ function displayWeather(data) {
     `)
     $('.hour-n-date-container').append(currTempAndLoc)
     $('#location-input').val(`${data.location.name}`)
+
+    let weatherDetails = $(`
+        <div class="weather-details glass-container mt-5">
+            <div class="col-12 mt-2 fw-lighter">Cloudy: ${formatUnits(data.current.cloud) + '%'}</div>
+            <div class="col-12 mt-2 fw-lighter">Humidity: ${formatUnits(data.current.humidity) + '%'}</div>
+            <div class="col-12 mt-2 fw-lighter">Wind: ${formatUnits(data.current.wind_kph) + 'km/h'}</div>
+            <div class="col-12 mt-2 fw-lighter">Wind direction: ${data.current.wind_dir}</div>
+            <div class="col-12 mt-2 fw-lighter">Rain: ${data.current.precip_mm + 'mm'}</div>
+        </div>
+    `)
+    $('.curr-weather-details span').append(weatherDetails)
 }
 
 function formatUnits(unit) {
@@ -120,8 +131,8 @@ function formatUnits(unit) {
 }
 
 function initSlick() {
-    $('.slick-slider').on('init', function (event, slick) {
-        $('.slick-slider').removeClass('overflow');
+    $('.forecast-slider').on('init', function (event, slick) {
+        $('.forecast-slider').removeClass('overflow');
     });
     $('.forecast-slider').slick({
         slidesToShow: 2,
