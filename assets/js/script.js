@@ -1,14 +1,3 @@
-/*
-function setBackground(time) {
-    if (time > 7 && time < 19) {
-        $('section.hero').css('background-image', 'url(./assets/img/day.jpg')
-        $('body').css('color', 'black')
-        $('a').css('color', 'black')
-        $('.glass-container').css('background', 'linear-gradient(to right bottom, var(--lighterglass), var(--lightglass))')
-    }
-} 
-*/
-
 $(function () {
     getWeatherData()
     getDate()
@@ -36,6 +25,11 @@ $(document).on('click', '.c-hamburger', function (e) {
     }, 300)
 })
 
+function getWeatherData() {
+    $.get('https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
+        .done(response => displayWeather(response))
+}
+
 function getDate() {
     const date = new Date()
     const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -48,6 +42,9 @@ function getDate() {
     setInterval(() => {
         getTime()
     }, 1000);
+
+    const hour = date.getHours()
+    setBackground('', hour)
 }
 
 function getTime() {
@@ -58,17 +55,11 @@ function getTime() {
     $('.time-text').text(`${formatTime(hour) + ':' + formatTime(min) + ':' + formatTime(sec)}`)
 }
 
-function getWeatherData() {
-    $.get('https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
-        .done(response => displayWeather(response))
-}
-
 function formatTime(time) {
     return time < 10 ? (`0${time}`) : time
 }
 
 function displayWeather(data) {
-    console.log('data', data)
     for (let wCat of Object.keys(data.forecast.forecastday)) {
         let container = $(`
             <div class="slick-slider forecast-slider"></div>
@@ -124,6 +115,7 @@ function displayWeather(data) {
         </div>
     `)
     $('.curr-weather-details span').append(weatherDetails)
+    setBackground(data.current.condition.code, '')
 }
 
 function formatUnits(unit) {
@@ -149,4 +141,65 @@ function initSlick() {
             }
         }]
     })
+}
+
+function setBackground(weather, time) {
+    if (time > 7 && time < 19) {
+        switch (weather) {
+            case '1000':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/clear.jpg)')
+                break
+            case '1006':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/cloudy.jpg)')
+                break
+            case '1003':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/cloudy.jpg)')
+                break
+            case '1135':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/fog.jpg)')
+                break
+            case '1009':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/overcast.jpg)')
+                break
+            case '1030':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/mist.jpg)')
+                break
+            case '1276':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/thunder.jpg)')
+                break
+            default:
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/day.jpg)')
+                break
+        }
+        if (weather === 1063 || weather === 1180 || weather === 1183 || weather === 1186 || weather === 1189 || weather === 1192 || weather === 1195 || weather === 1240 || weather === 1243 || weather === 1246 || weather === 1150 || weather === 1153) {
+            $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/rain.jpg)')
+        } else if (weather === 1255 || weather === 1258 || weather === 1066 || weather === 1210 || weather === 1213 || weather === 1216 || weather === 1219 || weather === 1222 || weather === 1255) {
+            $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/snow.jpg)')
+        }
+    } else {
+        switch (weather) {
+            case '1135':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/fog.jpg)')
+                break
+            case '1009':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/overcast.jpg)')
+                break
+            case '1030':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/mist.jpg)')
+                break
+            case '1276':
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/thunder.jpg)')
+                break
+            default:
+                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/night.jpg)')
+                break
+        }
+        if (weather === 1063 || weather === 1180 || weather === 1183 || weather === 1186 || weather === 1189 || weather === 1192 || weather === 1195 || weather === 1240 || weather === 1243 || weather === 1246 || weather === 1150 || weather === 1153) {
+            $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/rain.jpg)')
+        } else if (weather === 1255 || weather === 1258 || weather === 1066 || weather === 1210 || weather === 1213 || weather === 1216 || weather === 1219 || weather === 1222 || weather === 1255) {
+            $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/snow.jpg)')
+        } else if (weather === 1000 || weather === 1006 || weather === 1003) {
+            $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/night.jpg)')
+        }
+    }
 }

@@ -34,7 +34,7 @@ a, a:hover {
 
 section.hero {
     height: 100vh;
-    background: center/cover no-repeat url(/assets/img/day.jpg);
+    background: center/cover no-repeat url(/assets/img/day/day.jpg);
 }
 
 section.hero:before {
