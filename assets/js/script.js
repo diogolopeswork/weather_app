@@ -127,17 +127,17 @@ function initSlick() {
         $('.forecast-slider').removeClass('overflow');
     });
     $('.forecast-slider').slick({
-        slidesToShow: 2,
+        slidesToShow: 1,
         draggable: true,
         lazyLoad: true,
-        slidesToScroll: 2,
+        slidesToScroll: 1,
         autoplay: true,
         mobileFirst: true,
         responsive: [{
             breakpoint: 768,
             settings: {
-                slidesToShow: 5,
-                slidesToScroll: 5,
+                slidesToShow: 3,
+                slidesToScroll: 3,
             }
         }]
     })

@@ -133,7 +133,7 @@ section.hero:before {
 .slick-arrow { display: none !important;}
 
 .forecast-card {
-    padding: .25rem;
+    padding: .5rem;
     border-radius: .5rem;
     flex-wrap: nowrap;
     text-align: center;
@@ -141,6 +141,7 @@ section.hero:before {
     background: rgba(255, 255, 255, 0.2);
     margin: 0 .25rem;
     overflow: hidden;
+    height: 100%;
 }
 
 .details-text-container img, .forecast-card-icon {
