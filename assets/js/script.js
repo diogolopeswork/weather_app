@@ -42,9 +42,6 @@ function getDate() {
     setInterval(() => {
         getTime()
     }, 1000);
-
-    const hour = date.getHours()
-    setBackground('', hour)
 }
 
 function getTime() {
@@ -115,7 +112,7 @@ function displayWeather(data) {
         </div>
     `)
     $('.curr-weather-details span').append(weatherDetails)
-    setBackground(data.current.condition.code, '')
+    setBackground(data.current.condition.code)
 }
 
 function formatUnits(unit) {
@@ -143,8 +140,11 @@ function initSlick() {
     })
 }
 
-function setBackground(weather, time) {
-    if (time > 7 && time < 19) {
+function setBackground(weather) {
+    const time = new Date()
+    const hours = time.getHours()
+
+    if (hours > 7 && hours < 19) {
         switch (weather) {
             case '1000':
                 $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/clear.jpg)')
@@ -165,11 +165,7 @@ function setBackground(weather, time) {
             $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/day/snow.jpg)')
         }
     } else {
-        switch (weather) {
-            default:
-                $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/night.jpg)')
-                break
-        }
+        $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/night.jpg)')
         if (weather === 1063 || weather === 1180 || weather === 1183 || weather === 1186 || weather === 1189 || weather === 1192 || weather === 1195 || weather === 1240 || weather === 1243 || weather === 1246 || weather === 1150 || weather === 1153) {
             $('section.hero').css('background', 'center/cover no-repeat url(/assets/img/night/rain.jpg)')
         } else if (weather === 1255 || weather === 1258 || weather === 1066 || weather === 1210 || weather === 1213 || weather === 1216 || weather === 1219 || weather === 1222 || weather === 1255) {
