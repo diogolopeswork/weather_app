@@ -1,5 +1,4 @@
 $(function () {
-    getWeatherData()
     getDate()
 })
 
@@ -25,8 +24,21 @@ $(document).on('click', '.c-hamburger', function (e) {
     }, 300)
 })
 
-function getWeatherData() {
-    $.get('https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=Ilhavo&days=1&aqi=no&alerts=no')
+$(document).on('click', '#search-icon', function(e) {
+    let val = $('#location-input').val()
+    getInputVal(val)
+    $('.location-container').hide('slide', {
+        direction: 'up'
+    }, 500)
+    $('.intro').fadeOut('slow')
+})
+
+function getInputVal(val) {
+    return getWeatherData(val) 
+}
+
+function getWeatherData(val) {
+    $.get(`https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=${val}&days=1&aqi=no&alerts=no`)
         .done(response => displayWeather(response))
 }
 
