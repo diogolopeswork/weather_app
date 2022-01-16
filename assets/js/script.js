@@ -27,10 +27,13 @@ $(document).on('click', '.c-hamburger', function (e) {
 $(document).on('click', '#search-icon', function(e) {
     let val = $('#location-input').val()
     getInputVal(val)
-    $('.location-container').hide('slide', {
-        direction: 'up'
-    }, 500)
-    $('.intro').fadeOut('slow')
+})
+
+$(document).on('keypress', '#location-input', function(e) {
+    if(e.which == 13) {
+        let val = $('#location-input').val()
+        getInputVal(val)
+    }
 })
 
 function getInputVal(val) {
@@ -38,8 +41,19 @@ function getInputVal(val) {
 }
 
 function getWeatherData(val) {
-    $.get(`https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=${val}&days=1&aqi=no&alerts=no`)
-        .done(response => displayWeather(response))
+    try {
+        $.get(`https://api.weatherapi.com/v1/forecast.json?key=6a0c143f81ec4ec7a5b173316212111&q=${val}&days=1&aqi=no&alerts=no`)
+            .done(response => displayWeather(response))
+
+        $('.location-container').hide('slide', {
+            direction: 'up'
+        }, 500)
+        $('.intro').fadeOut('slow')
+    }
+
+    catch(err) {
+        console.log(err, 'Location Not Found')
+    }
 }
 
 function getDate() {
@@ -74,6 +88,7 @@ function displayWeather(data) {
             <div class="slick-slider forecast-slider"></div>
         `)
         $('.forecast-container').append(container)
+
         for (let wHour of data.forecast.forecastday[wCat].hour) {
             let hour = wHour
             let temp = hour.temp_c
